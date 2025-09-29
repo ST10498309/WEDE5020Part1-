@@ -1,0 +1,259 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    color: black;
+    background-color: #ffd3da;
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: #F2A2A2;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+#wrapper {
+    width: 90%;
+    max-width: 60rem;
+    margin: 0 auto;
+}
+
+header {
+    background-color: #ffbdc7;
+    padding: 1rem 2%;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+header img {
+    width: 8rem;
+    height: auto;
+}
+
+#topLinks ul {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+#topLinks li {
+    position: relative;
+}
+
+#topLinks a {
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 0.3rem;
+}
+
+#topLinks a:hover {
+    background-color: pink;
+    color: white;
+}
+
+#topLinks li ul.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #FECFEF;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    min-width: 10rem;
+    z-index: 1000;
+    box-shadow: 0 0.25rem 0.375rem rgba(0,0,0,0.2);
+}
+
+#topLinks li:hover ul.dropdown {
+    display: block;
+}
+
+#topLinks li ul.dropdown li {
+    display: block;
+    margin: 0.25rem 0;
+}
+
+#topLinks li ul.dropdown a:hover {
+    background-color: blanchedalmond;
+    color: black;
+}
+
+.hero {
+    margin-top: 1.25rem;
+    text-align: center;
+}
+
+.hero img {
+    width: 100%;
+    max-height: 50vh;
+    height: auto;
+    object-fit: cover;
+}
+
+main {
+    display: grid;
+    gap: 1.25rem;
+    padding: 1.25rem 2%;
+}
+
+#homeInfo {
+    background-color: rgba(255, 255, 255, 0.6);
+    border: 0.0625rem solid #F2A2A2;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.3125rem rgba(0,0,0,0.1);
+    padding: 1.25rem;
+    display: grid;
+    gap: 1.25rem;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 0.05rem;
+    line-height: 1.2;
+    color: black;
+    padding-left: 1.875rem;
+    border-bottom: 0.0625rem solid black;
+    padding-bottom: 0.9375rem;
+    margin-bottom: 0.9375rem;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.6;
+    padding-left: 1.875rem;
+    margin-bottom: 0.9375rem;
+    color: black;
+}
+
+ul li {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 0.3125rem;
+}
+
+section {
+    background-color: #FFE6EB;
+    border-radius: 0.625rem;
+    padding: 0.9375rem;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.1);
+}
+
+footer {
+    text-align: center;
+    color: black;
+    font-size: 0.875rem;
+    padding: 0.625rem 0 0.3125rem 0;
+}
+
+footer nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 0.9375rem;
+    flex-wrap: wrap;
+}
+
+/* GALLERY */
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 1rem 2%;
+    width: 100%;
+}
+
+.gallery-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    object-fit: cover;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.gallery-container img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+/* MEDIA QUERIES */
+@media only screen and (max-width: 960px) {
+    #wrapper {
+        width: 95%;
+    }
+
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    #topLinks ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    #homeInfo{
+        padding: 1rem;
+        width: 100%;
+    }
+
+    .hero img {
+        max-height: 35vh;
+    }
+
+    .gallery-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    footer p{
+        padding-left: 0;
+    }
+}
+
+@media only screen and (max-width: 600px){
+    h1 {
+        font-size: 1.5rem;
+        padding-left: 1rem;
+    }
+
+    p, ul li {
+        font-size: 0.875rem;
+        padding-left: 1rem;
+    }
+
+    .hero img {
+        max-height: 25vh;
+    }
+
+    .gallery-container {
+        grid-template-columns: 1fr;
+    }
+}
