@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shani's Bakes Contact Us</title>
+
+  <title>Shani's Bakes | Contact Us - Handcrafted Bakery in Johannesburg</title>
+  <meta name="description"
+    content="Get in touch with Shani's Bakes for custom cakes, baked goods, and inquiries. Visit our bakery, call, email, or use our contact form.">
+  <meta name="keywords"
+    content="Shani's Bakes, contact, bakery, custom cakes, pastries, baked goods, bakery contact, Johannesburg bakery">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Shania Kuni">
+  <meta name="image" content="_images/shani's bakes logo.png">
+
+
+
   <link rel="stylesheet" href="styles.css">
-  
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  
+
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script src="_javascript/map.js"></script>
 </head>
@@ -16,7 +27,7 @@
   <div id="wrapper">
     <header>
       <div class="header-container">
-        <img src="_images/shani's bakes logo.png" alt="Shani's Bakes Logo">
+        <img src="_images/shani's bakes logo.png" alt="Shani's Bakes Logo showing bakery branding">
         <nav id="topLinks">
           <ul>
             <li><a href="index.html">Home Page</a></li>
@@ -40,14 +51,15 @@
     <main>
       <div id="homeInfo">
         <h1>Contact Us!</h1>
-        <p>We would be delighted to hear from you! Use the methods below to contact us whether you would want to place a customized order, have a query, or simply say hi.</p>
+        <p>We would be delighted to hear from you! Use the methods below to contact us whether you would want to place a
+          customized order, have a query, or simply say hi.</p>
         <p><strong>Visit Our Shop:</strong> 123 Sweet Street, Cozy Town, ZA</p>
         <p><strong>Call Us:</strong> +27 12 345 6789</p>
         <p><strong>Email Us:</strong> info@shanisbakes.co.za</p>
 
-      
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfCkmPy-WuhK6CYGkVh98dgRoO2sNu11GH0wm2a6rktX8KLFg/viewform?embedded=true" 
-                width="640" height="1587" frameborder="0" marginheight="0" marginwidth="0">
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSfCkmPy-WuhK6CYGkVh98dgRoO2sNu11GH0wm2a6rktX8KLFg/viewform?embedded=true"
+          width="640" height="1587" frameborder="0" marginheight="0" marginwidth="0">
         </iframe>
 
         <h1>Shop Hours</h1>
@@ -86,8 +98,8 @@
   </div>
 
   <script>
-    var shopCoordinates = [-26.1087, 27.8729]; 
-   
+    var shopCoordinates = [-26.1087, 27.8729];
+
     var map = L.map('map').setView(shopCoordinates, 15);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -100,4 +112,5 @@
       .openPopup();
   </script>
 </body>
+
 </html>
