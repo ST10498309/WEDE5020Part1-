@@ -65,6 +65,13 @@ September 29 (Week 5, September): Part 2 submission and communication of the POE
 
 ## 8.Changelog 
 #### Added 
+Created a folder structure _images, _private 
+with the html files index.html, abouts_us.html, contact_us.html, events.html, gallery.html, menu.html, testimonials.html, cakes.html, freshly_baked_goods.html and beverages.html. 
+
+#### Fixed 
+Corrected initial break between pages and navigation. 
+Fixed image paths. 
+#### Added 
 About Us page with mission and vision statement 
 Videos on the Cakes page and freshly baked goods page 
 Three individual pages for the menu instead of one so that it is easier for the user to navigate and clearly see what they desire. 

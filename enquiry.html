@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Shani's Bakes | Enquiry Form - Handcrafted Bakery in Johannesburg</title>
   <meta name="description"
     content="Submit an enquiry to Shani's Bakes for custom cakes, baked goods, or questions. Fill out our enquiry form and we'll get back to you.">
@@ -12,8 +11,8 @@
     content="Shani's Bakes, enquiry, bakery, custom cakes, pastries, baked goods, Johannesburg bakery">
   <meta name="robots" content="index, follow">
   <meta name="author" content="Shania Kuni">
-
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
 </head>
 
 <body>
@@ -43,11 +42,11 @@
     </header>
 
     <main>
-      <div id="contactInfo">
+      <section id="contactInfo">
         <h1>Send Us an Enquiry</h1>
         <p>Have a question or want to place a custom order? Fill out the form below and we'll get back to you as soon as possible.</p>
 
-        <form action="submit_enquiry.php" method="POST" id="enquiryForm">
+        <form id="enquiryForm">
           <label for="name">Full Name<span>*</span></label>
           <input type="text" id="name" name="name" placeholder="Your full name" required>
 
@@ -76,10 +75,12 @@
           <button type="submit">Submit Enquiry</button>
         </form>
 
-        <p>Or <a href="contact_us.html">go back to Contact Us page</a> to see our shop info and map.</p>
+        <p id="successMessage" style="display:none; color:green; font-weight:bold; margin-top:1rem;"></p>
 
-        <div id="map" style="height: 400px; width: 100%; margin-top: 1rem;"></div>
-      </div>
+        <p>Or <a href="contact_us.html">go back to the Contact Us page</a> to see our shop info and map.</p>
+
+        <div id="map" style="height: 400px; width: 100%; margin-top: 2rem;"></div>
+      </section>
     </main>
 
     <footer>
@@ -110,12 +111,10 @@
   <script>
     var shopCoordinates = [-26.1087, 27.8729];
     var map = L.map('map').setView(shopCoordinates, 15);
-
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
       maxZoom: 19
     }).addTo(map);
-
     L.marker(shopCoordinates).addTo(map)
       .bindPopup('<b>Shani\'s Bakes</b><br>123 Sweet Street, Cozy Town, ZA')
       .openPopup();
@@ -123,35 +122,32 @@
 
   <script>
     const enquiryForm = document.getElementById('enquiryForm');
+    const successMessage = document.getElementById('successMessage');
 
-    enquiryForm.addEventListener('submit', function(e) {
+    enquiryForm.addEventListener('submit', function (e) {
       e.preventDefault();
+      successMessage.style.color = "black";
+      successMessage.textContent = "Submitting...";
+      successMessage.style.display = "block";
 
       const name = enquiryForm.name.value.trim();
       const email = enquiryForm.email.value.trim();
-      const phone = enquiryForm.phone.value.trim();
       const enquiryType = enquiryForm.enquiryType.value;
       const subject = enquiryForm.subject.value.trim();
       const message = enquiryForm.message.value.trim();
 
-      if(name.length < 2) { alert("Please enter a valid name."); return; }
-      if(!email.includes("@")) { alert("Please enter a valid email."); return; }
-      if(enquiryType === "") { alert("Please select a type of enquiry."); return; }
-      if(subject.length < 2) { alert("Please enter a subject."); return; }
-      if(message.length < 5) { alert("Please enter a message."); return; }
+      if (name.length < 2) { successMessage.style.color = "red"; successMessage.textContent = "Please enter a valid name."; return; }
+      if (!email.includes("@")) { successMessage.style.color = "red"; successMessage.textContent = "Please enter a valid email."; return; }
+      if (enquiryType === "") { successMessage.style.color = "red"; successMessage.textContent = "Please select a type of enquiry."; return; }
+      if (subject.length < 2) { successMessage.style.color = "red"; successMessage.textContent = "Please enter a subject."; return; }
+      if (message.length < 5) { successMessage.style.color = "red"; successMessage.textContent = "Please enter a message."; return; }
 
-      const formData = { name, email, phone, enquiryType, subject, message };
-
-      fetch('submit_enquiry.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      })
-      .then(response => response.text())
-      .then(data => alert("Enquiry submitted successfully!"))
-      .catch(error => alert("There was an error submitting your enquiry."));
+      setTimeout(() => {
+        successMessage.style.color = "green";
+        successMessage.textContent = "Enquiry submitted successfully!";
+        enquiryForm.reset();
+      }, 500);
     });
   </script>
 </body>
-
 </html>

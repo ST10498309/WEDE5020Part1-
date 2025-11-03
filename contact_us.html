@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Shani's Bakes | Contact Us - Handcrafted Bakery in Johannesburg</title>
   <meta name="description"
     content="Get in touch with Shani's Bakes for custom cakes, baked goods, and inquiries. Visit our bakery, call, email, or use our contact form.">
@@ -16,7 +15,6 @@
 
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script src="_javascript/map.js"></script>
 </head>
@@ -56,7 +54,7 @@
         <p><strong>Call Us:</strong> +27 12 345 6789</p>
         <p><strong>Email Us:</strong> info@shanisbakes.co.za</p>
 
-        <form action="submit_contact.php" method="POST" id="contactForm">
+        <form id="contactForm">
           <label for="name">Full Name<span>*</span></label>
           <input type="text" id="name" name="name" placeholder="Your full name" required>
 
@@ -81,6 +79,8 @@
           <button type="submit">Send Message</button>
         </form>
 
+        <p id="successMessage" style="display:none; color:green; font-weight:bold; margin-top:1rem;"></p>
+
         <h1>Shop Hours</h1>
         <p><strong>Mondays:</strong> 8 am - 5 pm</p>
         <p><strong>Tuesdays:</strong> 8 am - 5 pm</p>
@@ -90,7 +90,6 @@
         <p><strong>Saturdays:</strong> 9 am - 1 pm</p>
 
         <div id="map" style="height: 400px; width: 100%; margin-top: 1rem;"></div>
-        <br class="clearFix">
       </div>
     </main>
 
@@ -119,14 +118,11 @@
 
   <script>
     var shopCoordinates = [-26.1087, 27.8729];
-
     var map = L.map('map').setView(shopCoordinates, 15);
-
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
       maxZoom: 19
     }).addTo(map);
-
     L.marker(shopCoordinates).addTo(map)
       .bindPopup('<b>Shani\'s Bakes</b><br>123 Sweet Street, Cozy Town, ZA')
       .openPopup();
@@ -134,9 +130,13 @@
 
   <script>
     const contactForm = document.getElementById('contactForm');
+    const successMessage = document.getElementById('successMessage');
 
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', function (e) {
       e.preventDefault();
+      successMessage.style.color = "black";
+      successMessage.textContent = "Submitting...";
+      successMessage.style.display = "block";
 
       const name = contactForm.name.value.trim();
       const email = contactForm.email.value.trim();
@@ -144,24 +144,18 @@
       const type = contactForm.type.value;
       const message = contactForm.message.value.trim();
 
-      if(name.length < 2) { alert("Please enter a valid name."); return; }
-      if(!email.includes("@")) { alert("Please enter a valid email."); return; }
-      if(subject.length < 2) { alert("Please enter a subject."); return; }
-      if(type === "") { alert("Please select a message type."); return; }
-      if(message.length < 5) { alert("Please enter a message."); return; }
+      if (name.length < 2) { successMessage.style.color = "red"; successMessage.textContent = "Please enter a valid name."; return; }
+      if (!email.includes("@")) { successMessage.style.color = "red"; successMessage.textContent = "Please enter a valid email."; return; }
+      if (subject.length < 2) { successMessage.style.color = "red"; successMessage.textContent = "Please enter a subject."; return; }
+      if (type === "") { successMessage.style.color = "red"; successMessage.textContent = "Please select a message type."; return; }
+      if (message.length < 5) { successMessage.style.color = "red"; successMessage.textContent = "Please enter a message."; return; }
 
-      const formData = { name, email, subject, type, message };
-
-      fetch('submit_contact.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      })
-      .then(response => response.text())
-      .then(data => alert("Message sent successfully!"))
-      .catch(error => alert("There was an error sending your message."));
+      setTimeout(() => {
+        successMessage.style.color = "green";
+        successMessage.textContent = "Message sent successfully! Thank you for contacting Shani’s Bakes.";
+        contactForm.reset();
+      }, 500);
     });
   </script>
 </body>
-
 </html>
