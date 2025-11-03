@@ -5,20 +5,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Shani's Bakes | Contact Us - Handcrafted Bakery in Johannesburg</title>
+  <title>Shani's Bakes | Enquiry Form - Handcrafted Bakery in Johannesburg</title>
   <meta name="description"
-    content="Get in touch with Shani's Bakes for custom cakes, baked goods, and inquiries. Visit our bakery, call, email, or use our contact form.">
+    content="Submit an enquiry to Shani's Bakes for custom cakes, baked goods, or questions. Fill out our enquiry form and we'll get back to you.">
   <meta name="keywords"
-    content="Shani's Bakes, contact, bakery, custom cakes, pastries, baked goods, bakery contact, Johannesburg bakery">
+    content="Shani's Bakes, enquiry, bakery, custom cakes, pastries, baked goods, Johannesburg bakery">
   <meta name="robots" content="index, follow">
   <meta name="author" content="Shania Kuni">
-  <meta name="image" content="_images/shani's bakes logo.png">
 
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <script src="_javascript/map.js"></script>
 </head>
 
 <body>
@@ -30,8 +25,8 @@
           <ul>
             <li><a href="index.html">Home Page</a></li>
             <li><a href="about_us.html">About Us</a></li>
-            <li><a href="enquiry.html">Enquiry</a></li>
-            <li class="currentPage">Contact Us</li>
+            <li class="currentPage"><a href="enquiry.html">Enquiry</a></li>
+            <li><a href="contact_us.html">Contact Us</a></li>
             <li><a href="events.html">Events</a></li>
             <li><a href="menu.html">Menu</a>
               <ul class="dropdown">
@@ -48,49 +43,42 @@
     </header>
 
     <main>
-      <div id="homeInfo">
-        <h1>Contact Us!</h1>
-        <p>We would be delighted to hear from you! Use the methods below to contact us whether you would want to place a
-          customized order, have a query, or simply say hi.</p>
-        <p><strong>Visit Our Shop:</strong> 123 Sweet Street, Cozy Town, ZA</p>
-        <p><strong>Call Us:</strong> +27 12 345 6789</p>
-        <p><strong>Email Us:</strong> info@shanisbakes.co.za</p>
+      <div id="contactInfo">
+        <h1>Send Us an Enquiry</h1>
+        <p>Have a question or want to place a custom order? Fill out the form below and we'll get back to you as soon as possible.</p>
 
-        <form action="submit_contact.php" method="POST" id="contactForm">
+        <form action="submit_enquiry.php" method="POST" id="enquiryForm">
           <label for="name">Full Name<span>*</span></label>
           <input type="text" id="name" name="name" placeholder="Your full name" required>
 
           <label for="email">Email Address<span>*</span></label>
           <input type="email" id="email" name="email" placeholder="Your email address" required>
 
-          <label for="subject">Subject<span>*</span></label>
-          <input type="text" id="subject" name="subject" placeholder="Subject of your message" required>
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="Optional">
 
-          <label for="type">Type of Message<span>*</span></label>
-          <select id="type" name="type" required>
+          <label for="enquiryType">Type of Enquiry<span>*</span></label>
+          <select id="enquiryType" name="enquiryType" required>
             <option value="">--Select--</option>
-            <option value="feedback">Feedback</option>
-            <option value="complaint">Complaint</option>
-            <option value="inquiry">Inquiry</option>
+            <option value="product">Product Order</option>
+            <option value="service">Service</option>
+            <option value="volunteering">Volunteering</option>
+            <option value="sponsorship">Sponsorship</option>
             <option value="other">Other</option>
           </select>
+
+          <label for="subject">Subject<span>*</span></label>
+          <input type="text" id="subject" name="subject" placeholder="Subject of your enquiry" required>
 
           <label for="message">Message<span>*</span></label>
           <textarea id="message" name="message" rows="6" placeholder="Type your message here" required></textarea>
 
-          <button type="submit">Send Message</button>
+          <button type="submit">Submit Enquiry</button>
         </form>
 
-        <h1>Shop Hours</h1>
-        <p><strong>Mondays:</strong> 8 am - 5 pm</p>
-        <p><strong>Tuesdays:</strong> 8 am - 5 pm</p>
-        <p><strong>Wednesdays:</strong> 8 am - 5 pm</p>
-        <p><strong>Thursdays:</strong> 8 am - 5 pm</p>
-        <p><strong>Fridays:</strong> 8 am - 5 pm</p>
-        <p><strong>Saturdays:</strong> 9 am - 1 pm</p>
+        <p>Or <a href="contact_us.html">go back to Contact Us page</a> to see our shop info and map.</p>
 
         <div id="map" style="height: 400px; width: 100%; margin-top: 1rem;"></div>
-        <br class="clearFix">
       </div>
     </main>
 
@@ -100,7 +88,7 @@
           <li><a href="index.html">Home Page</a></li>
           <li><a href="about_us.html">About Us</a></li>
           <li><a href="enquiry.html">Enquiry</a></li>
-          <li>Contact Us</li>
+          <li><a href="contact_us.html">Contact Us</a></li>
           <li><a href="events.html">Events</a></li>
           <li><a href="menu.html">Menu</a>
             <ul class="dropdown">
@@ -117,9 +105,10 @@
     </footer>
   </div>
 
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="_javascript/map.js"></script>
   <script>
     var shopCoordinates = [-26.1087, 27.8729];
-
     var map = L.map('map').setView(shopCoordinates, 15);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -133,33 +122,34 @@
   </script>
 
   <script>
-    const contactForm = document.getElementById('contactForm');
+    const enquiryForm = document.getElementById('enquiryForm');
 
-    contactForm.addEventListener('submit', function(e) {
+    enquiryForm.addEventListener('submit', function(e) {
       e.preventDefault();
 
-      const name = contactForm.name.value.trim();
-      const email = contactForm.email.value.trim();
-      const subject = contactForm.subject.value.trim();
-      const type = contactForm.type.value;
-      const message = contactForm.message.value.trim();
+      const name = enquiryForm.name.value.trim();
+      const email = enquiryForm.email.value.trim();
+      const phone = enquiryForm.phone.value.trim();
+      const enquiryType = enquiryForm.enquiryType.value;
+      const subject = enquiryForm.subject.value.trim();
+      const message = enquiryForm.message.value.trim();
 
       if(name.length < 2) { alert("Please enter a valid name."); return; }
       if(!email.includes("@")) { alert("Please enter a valid email."); return; }
+      if(enquiryType === "") { alert("Please select a type of enquiry."); return; }
       if(subject.length < 2) { alert("Please enter a subject."); return; }
-      if(type === "") { alert("Please select a message type."); return; }
       if(message.length < 5) { alert("Please enter a message."); return; }
 
-      const formData = { name, email, subject, type, message };
+      const formData = { name, email, phone, enquiryType, subject, message };
 
-      fetch('submit_contact.php', {
+      fetch('submit_enquiry.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       })
       .then(response => response.text())
-      .then(data => alert("Message sent successfully!"))
-      .catch(error => alert("There was an error sending your message."));
+      .then(data => alert("Enquiry submitted successfully!"))
+      .catch(error => alert("There was an error submitting your enquiry."));
     });
   </script>
 </body>
