@@ -65,7 +65,7 @@ September 29 (Week 5, September): Part 2 submission and communication of the POE
 
 ## 8.Changelog 
 #### Added 
-About Us page with mission and vission statement 
+About Us page with mission and vision statement 
 Videos on the Cakes page and freshly baked goods page 
 Three individual pages for the menu instead of one so that it is easier for the user to navigate and clearly see what they desire. 
 
@@ -77,7 +77,7 @@ Navigation is the same no matter where I want to go,does not change when I click
 ##### Fixed 
 1. File and folder structure
 Feedback stated that I need to improve my naming of my html folders. 
--I changed the named of homepage.html to index.html. 
+-I changed the name of homepage.html to index.html. 
 I also removed all the _page after each html file name. 
 My navigation had the outdated names of the web pages so I corrected it. 
 E.g. When i changed the homepage.html to index.html then my navigation was not functioning properly so I updated all the web pages names which linked it accordingly. 
@@ -85,9 +85,9 @@ E.g. When i changed the homepage.html to index.html then my navigation was not f
 ##### Fixed
 2. Goals and objectives:
 Feedback stated that there is need to improve the goals and objectives of developing a website for a chosen business. 
-My objectives need to be actionable as the objectives highlight what will be done to acheive the goals. 
+My objectives need to be actionable as the objectives highlight what will be done to achieve the goals. 
 -My goals were overall and vague. 
-So I put it into a system by defining each goal seperately. 
+So I put it into a system by defining each goal separately. 
 
 ##### Fixed 
 3. Reference List 
@@ -119,15 +119,23 @@ Feedback stated that each task should be further decomposed with a visible timel
 Feedback stated that my sitemap needed some improvements 
 -I updated it accordingly. 
 
+### Feedback and changes from part 2:
+##### 1.Skill: CSS Styling for Desktop:Css- Pseudo-Classes Used. 
+Feedback stated that there was no pseudo-classes used. Interactive elements lack styling. 
+-I added pseudo-classes and added styling to interactive elements 
+
+##### 2. Skill: Responsive Design: Adjustment- Typography. 
+Feedback stated that the typography adjustments are present but could be improved. 
+Text elements adapt mostly correctly, but there may be minor issues. 
+-I improved typography adjustments and fixed minor issues with the text elements. 
+
 ## 9. Images of responsiveness 
 ![desktop](_images/desktop.png)
 ![tablet](_images/tablet.png)
 ![mobile](_images/mobile.png)
 
 
-
-
-## 9.References 
+## 10.References 
 Figma. (2025) Figma – Design, Prototype, and Collaborate. [online] 
 Available at: https://www.figma.com
  [Accessed 27 Aug. 2025].
