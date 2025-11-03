@@ -438,3 +438,10 @@ input:hover, textarea:hover, select:hover {
         padding: 1.5rem;
     }
 }
+
+.gallery-container img.active {
+    transform: scale(1.1);
+    border: 3px solid #ff7f91;
+    transition: transform 0.3s ease, border 0.3s ease;
+}
+
